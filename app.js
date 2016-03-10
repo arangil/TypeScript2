@@ -82,5 +82,5 @@ function AddSpecialityToPhysician(name) {
         console.log('Speciality added :' + spec);
     }
 }
-AddSpecialityToPhysician('Arun', 'MD', 'MBBS', 'LS', 'DS');
+AddSpecialityToPhysician('Arun', 'MD', 'MBBS', 'LS', 'DS', 'HT', 'FRCS');
 //# sourceMappingURL=app.js.map

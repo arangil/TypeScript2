@@ -91,4 +91,4 @@ function AddSpecialityToPhysician(name: string, ...specility: string[]) {
     }
 }
 
-AddSpecialityToPhysician('Arun', 'MD', 'MBBS', 'LS', 'DS');
+AddSpecialityToPhysician('Arun', 'MD', 'MBBS', 'LS', 'DS', 'HT', 'FRCS');
