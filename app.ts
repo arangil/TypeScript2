@@ -91,4 +91,8 @@ function AddSpecialityToPhysician(name: string, ...specility: string[]) {
     }
 }
 
+console.log('');
+console.log('Using rest params');
+console.log('-------------------------');
+
 AddSpecialityToPhysician('Arun', 'MD', 'MBBS', 'LS', 'DS', 'HT', 'FRCS');
