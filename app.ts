@@ -1,4 +1,8 @@
-﻿function GetAllPhysicians() {
+﻿import {AddHeading} from './Library/Helpers/AddHeading';
+import {Speciality} from './Library/Enums/enums';
+import {IPhysician} from './Library/Interfaces/IPhysician';
+
+function GetAllPhysicians(): IPhysician[] {
     let physicians = [
         { id: 1, title: 'MD', name: 'James Haeller', newpatients: true, speciality: Speciality.Heart },
         { id: 2, title: 'MS', name: 'Thomas Kep', newpatients: true, speciality: Speciality.Ortho },
@@ -35,8 +39,32 @@ function GetCustomPhysicianData(name: string, id: number): string {
     return name + id;
 }
 
-enum Speciality { Heart, Ortho, Dental, Surgery, Pediatrics }
 
+// Start Over loading
+// Overloaded function definitions
+function GetPhysicianInfo(name: string): string[];
+function GetPhysicianInfo(newpatients: boolean): string[];
+// Overloaded function implementation
+function GetPhysicianInfo(featureType: any): string[] {
+    // const physicians = GetAllPhysicians();
+    const foundPhysicians: string[] = [];
+
+    if (typeof (featureType) == 'string') {
+        //Loop through physicians, find match and push matchess
+        foundPhysicians.push('test string phy');
+    }
+    else if (typeof (featureType) == 'boolean') {
+        //Loop through physicians, find match and push matchess
+        foundPhysicians.push('test bool phy');
+    }
+
+    return foundPhysicians;
+}
+// End Over loading
+
+// enum declaration in typescript
+//enum Speciality { Heart, Ortho, Dental, Surgery, Pediatrics }
+// Get all physicians
 const allPhysicians = GetAllPhysicians();
 
 let phycount = GetCountDoctorsAcceptingNewPatients(allPhysicians);
@@ -44,14 +72,10 @@ let phycount = GetCountDoctorsAcceptingNewPatients(allPhysicians);
 console.log("Number of physicians" + phycount);
 GetPhysiciansByTitle(Speciality.Heart);
 
-console.log('');
-console.log('Using Arrow Functions');
-console.log('-------------------------');
+AddHeading('Using Arrow Functions');
 allPhysicians.forEach((phy) => console.log('Physician Name : ' + phy.name));
 
-console.log('');
-console.log('Using Arrow  Filter Functions');
-console.log('-------------------------');
+AddHeading('Using Arrow  Filter Functions');
 allPhysicians.forEach((phy) => {
     if (phy.speciality == Speciality.Heart)
         console.log('Heart Physician Name : ' + phy.name);
@@ -70,6 +94,7 @@ console.log('Physician Name with ID 8 : ' + phy2); // Returns the new order of r
 
 
 // Using optional parameters
+AddHeading('Using Optional Parameters');
 function CreatePhysician(name: string, title?: string, speciality?: string, acceptNewpatients?: boolean): void {
 
     console.log('Created customer ' + name);
@@ -91,8 +116,44 @@ function AddSpecialityToPhysician(name: string, ...specility: string[]) {
     }
 }
 
-console.log('');
-console.log('Using rest params');
-console.log('-------------------------');
-
+AddHeading('Using Rest Parameters');
 AddSpecialityToPhysician('Arun', 'MD', 'MBBS', 'LS', 'DS', 'HT', 'FRCS');
+
+
+AddHeading('Overloading functions');
+let phyfound = GetPhysicianInfo('Arun');
+phyfound.forEach((output) => console.log(output));
+phyfound = GetPhysicianInfo(false);
+phyfound.forEach((output) => console.log(output));
+
+// Start Using Interfaces //
+AddHeading('Using Interfaces');
+function PrintPhysicians(physician: IPhysician): void {
+    console.log('Physician name ' + physician.name);
+}
+let myphy1  = {
+    id: 12,
+    name: 'Arun',
+    title: 'Doctor',
+    speciality: Speciality.Heart,
+    newpatients: true,
+    meateater: false // example of duck typing. you can mark myphy : IPhysician, that makes it a strict Physician object.
+}
+
+let myphy2: IPhysician = {
+    id: 12,
+    name: 'Arun',
+    title: 'Doctor',
+    speciality: Speciality.Heart,
+    newpatients: true,
+    yearsofexperience: 12 // Strict Physician object.
+}
+
+PrintPhysicians(myphy1);
+PrintPhysicians(myphy2);
+// End Using Interfaces //
+
+
+
+
+
