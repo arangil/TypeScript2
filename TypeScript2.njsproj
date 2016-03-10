@@ -36,13 +36,19 @@
     <TypeScriptCompile Include="app.ts" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+    <TypeScriptCompile Include="Library\Classes\Physician.ts" />
     <TypeScriptCompile Include="Library\Enums\enums.ts" />
-    <TypeScriptCompile Include="interfaces.ts" />
+    <TypeScriptCompile Include="Library\Helpers\AddHeading.ts" />
+    <TypeScriptCompile Include="Library\Interfaces\IErrorLogger.ts" />
+    <TypeScriptCompile Include="Library\Interfaces\IPhysician.ts" />
     <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Library\" />
     <Folder Include="Library\Enums\" />
+    <Folder Include="Library\Interfaces\" />
+    <Folder Include="Library\Helpers\" />
+    <Folder Include="Library\Classes\" />
     <Folder Include="Scripts\" />
     <Folder Include="Scripts\typings\" />
     <Folder Include="Scripts\typings\node\" />

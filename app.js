@@ -1,5 +1,6 @@
 var AddHeading_1 = require('./Library/Helpers/AddHeading');
 var enums_1 = require('./Library/Enums/enums');
+var Physician_1 = require('./Library/Classes/Physician');
 function GetAllPhysicians() {
     var physicians = [
         { id: 1, title: 'MD', name: 'James Haeller', newpatients: true, speciality: enums_1.Speciality.Heart },
@@ -111,15 +112,34 @@ var myphy1 = {
     newpatients: true,
     meateater: false // example of duck typing. you can mark myphy : IPhysician, that makes it a strict Physician object.
 };
+// Strict Physician object.
 var myphy2 = {
     id: 12,
     name: 'Arun',
     title: 'Doctor',
     speciality: enums_1.Speciality.Heart,
     newpatients: true,
-    yearsofexperience: 12 // Strict Physician object.
+    yearsofexperience: 12
 };
 PrintPhysicians(myphy1);
 PrintPhysicians(myphy2);
 // End Using Interfaces //
+// Using Interface independently
+AddHeading_1.AddHeading('Using Interfaces independently');
+var logPhyError;
+logPhyError = function (errorMsg) { return console.log('Physician error code :' + errorMsg); };
+logPhyError('33234');
+var myphy3 = {
+    id: 12,
+    name: 'Arun',
+    title: 'Doctor',
+    speciality: enums_1.Speciality.Heart,
+    newpatients: true,
+    yearsofexperience: 12,
+    logText: function (errmsg) { return '2222'; }
+};
+AddHeading_1.AddHeading('Using Classes');
+var myPhy4 = new Physician_1.Physician();
+myPhy4.name = 'Arun';
+myPhy4.Mentors('James');
 //# sourceMappingURL=app.js.map

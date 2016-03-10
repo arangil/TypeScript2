@@ -1,6 +1,8 @@
 ﻿import {AddHeading} from './Library/Helpers/AddHeading';
 import {Speciality} from './Library/Enums/enums';
-import {IPhysician} from './Library/Interfaces/IPhysician';
+import {IErrorLogger} from './Library/Interfaces/IErrorLogger';
+import {IPhysician, IPhysicianManager} from './Library/Interfaces/IPhysician';
+import {Physician} from './Library/Classes/Physician';
 
 function GetAllPhysicians(): IPhysician[] {
     let physicians = [
@@ -140,18 +142,40 @@ let myphy1  = {
     meateater: false // example of duck typing. you can mark myphy : IPhysician, that makes it a strict Physician object.
 }
 
+// Strict Physician object.
 let myphy2: IPhysician = {
     id: 12,
     name: 'Arun',
     title: 'Doctor',
     speciality: Speciality.Heart,
     newpatients: true,
-    yearsofexperience: 12 // Strict Physician object.
+    yearsofexperience: 12 
 }
 
 PrintPhysicians(myphy1);
 PrintPhysicians(myphy2);
 // End Using Interfaces //
+
+// Using Interface independently
+AddHeading('Using Interfaces independently');
+let logPhyError: IErrorLogger;
+logPhyError = (errorMsg: string) => console.log('Physician error code :' + errorMsg);
+logPhyError('33234');
+
+let myphy3: IPhysician = {
+    id: 12,
+    name: 'Arun',
+    title: 'Doctor',
+    speciality: Speciality.Heart,
+    newpatients: true,
+    yearsofexperience: 12, 
+    logText:  (errmsg: string) => '2222'
+}
+AddHeading('Using Classes');
+let myPhy4: Physician = new Physician();
+myPhy4.name = 'Arun';
+myPhy4.Mentors('James');
+
 
 
 
