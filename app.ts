@@ -3,6 +3,7 @@ import {Speciality} from './Library/Enums/enums';
 import {IErrorLogger} from './Library/Interfaces/IErrorLogger';
 import {IPhysician, IPhysicianManager} from './Library/Interfaces/IPhysician';
 import {Physician} from './Library/Classes/Physician';
+import {abstEmployee, Employee, SpecialEmployee, SpecialEmployee1} from './Library/Classes/Employee';
 
 function GetAllPhysicians(): IPhysician[] {
     let physicians = [
@@ -110,6 +111,7 @@ function CreatePhysician(name: string, title?: string, speciality?: string, acce
 CreatePhysician('Arun', '', '', true);
 
 //Using rest parameters
+AddHeading('Using Rest Parameters');
 
 function AddSpecialityToPhysician(name: string, ...specility: string[]) {
     console.log('Physician Name ' + name);
@@ -118,7 +120,6 @@ function AddSpecialityToPhysician(name: string, ...specility: string[]) {
     }
 }
 
-AddHeading('Using Rest Parameters');
 AddSpecialityToPhysician('Arun', 'MD', 'MBBS', 'LS', 'DS', 'HT', 'FRCS');
 
 
@@ -152,8 +153,8 @@ let myphy2: IPhysician = {
     yearsofexperience: 12 
 }
 
-PrintPhysicians(myphy1);
-PrintPhysicians(myphy2);
+PrintPhysicians(myphy1); // pass a non strict object
+PrintPhysicians(myphy2); // pass a physician object
 // End Using Interfaces //
 
 // Using Interface independently
@@ -176,8 +177,41 @@ let myPhy4: Physician = new Physician();
 myPhy4.name = 'Arun';
 myPhy4.Mentors('James');
 
+AddHeading('Testing constructers');
 
+let emp: Employee = new Employee();
+emp.name = 'Arun';
+emp.empid = 1;
+emp.dob = '2/12/1989';
+emp.printemp();
 
+// using constructor with optional parameters.
+let emp2: Employee = new Employee(1, 'Arun Arangil');
+emp2.printemp();
 
+AddHeading('Testing default and Static fields');
+// using default value for isdiabetic and static company name
+let emp3: Employee = new Employee(1, 'Arun Arangil');
+emp3.isDiabetic = true;
+emp3.printemp();
 
+AddHeading('Testing Inherited class SpecialEmployee');
+let emp4: SpecialEmployee = new SpecialEmployee(1, 'Arun Special');
+emp4.SpecialCode = 'BSCDEE';
+emp4.printemp();
 
+AddHeading('Testing Abstract Inherited class SpecialEmployee1');
+let emp5: SpecialEmployee1 = new SpecialEmployee1(1, 'Arun Abstract');
+emp5.SpecialCode = 'BSCDEE';
+emp5.printemp(); // abstract class implemented method
+emp5.printTransscript(); // class implemented or overeidden abstract method.
+
+AddHeading('Testing Class Expressions');
+let emp6 = class extends Employee {
+    printemp(): void {
+        console.log(`Extends employee ${this.name} prints - class expression example`);
+    }
+}
+
+let emp7 = new emp6(1,'Donald');
+emp7.printemp();

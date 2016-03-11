@@ -1,6 +1,12 @@
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var AddHeading_1 = require('./Library/Helpers/AddHeading');
 var enums_1 = require('./Library/Enums/enums');
 var Physician_1 = require('./Library/Classes/Physician');
+var Employee_1 = require('./Library/Classes/Employee');
 function GetAllPhysicians() {
     var physicians = [
         { id: 1, title: 'MD', name: 'James Haeller', newpatients: true, speciality: enums_1.Speciality.Heart },
@@ -81,6 +87,7 @@ function CreatePhysician(name, title, speciality, acceptNewpatients) {
 }
 CreatePhysician('Arun', '', '', true);
 //Using rest parameters
+AddHeading_1.AddHeading('Using Rest Parameters');
 function AddSpecialityToPhysician(name) {
     var specility = [];
     for (var _i = 1; _i < arguments.length; _i++) {
@@ -92,7 +99,6 @@ function AddSpecialityToPhysician(name) {
         console.log('Speciality added :' + spec);
     }
 }
-AddHeading_1.AddHeading('Using Rest Parameters');
 AddSpecialityToPhysician('Arun', 'MD', 'MBBS', 'LS', 'DS', 'HT', 'FRCS');
 AddHeading_1.AddHeading('Overloading functions');
 var phyfound = GetPhysicianInfo('Arun');
@@ -121,8 +127,8 @@ var myphy2 = {
     newpatients: true,
     yearsofexperience: 12
 };
-PrintPhysicians(myphy1);
-PrintPhysicians(myphy2);
+PrintPhysicians(myphy1); // pass a non strict object
+PrintPhysicians(myphy2); // pass a physician object
 // End Using Interfaces //
 // Using Interface independently
 AddHeading_1.AddHeading('Using Interfaces independently');
@@ -142,4 +148,40 @@ AddHeading_1.AddHeading('Using Classes');
 var myPhy4 = new Physician_1.Physician();
 myPhy4.name = 'Arun';
 myPhy4.Mentors('James');
+AddHeading_1.AddHeading('Testing constructers');
+var emp = new Employee_1.Employee();
+emp.name = 'Arun';
+emp.empid = 1;
+emp.dob = '2/12/1989';
+emp.printemp();
+// using constructor with optional parameters.
+var emp2 = new Employee_1.Employee(1, 'Arun Arangil');
+emp2.printemp();
+AddHeading_1.AddHeading('Testing default and Static fields');
+// using default value for isdiabetic and static company name
+var emp3 = new Employee_1.Employee(1, 'Arun Arangil');
+emp3.isDiabetic = true;
+emp3.printemp();
+AddHeading_1.AddHeading('Testing Inherited class SpecialEmployee');
+var emp4 = new Employee_1.SpecialEmployee(1, 'Arun Special');
+emp4.SpecialCode = 'BSCDEE';
+emp4.printemp();
+AddHeading_1.AddHeading('Testing Abstract Inherited class SpecialEmployee1');
+var emp5 = new Employee_1.SpecialEmployee1(1, 'Arun Abstract');
+emp5.SpecialCode = 'BSCDEE';
+emp5.printemp(); // abstract class implemented method
+emp5.printTransscript(); // class implemented or overeidden abstract method.
+AddHeading_1.AddHeading('Testing Class Expressions');
+var emp6 = (function (_super) {
+    __extends(class_1, _super);
+    function class_1() {
+        _super.apply(this, arguments);
+    }
+    class_1.prototype.printemp = function () {
+        console.log("Extends employee " + this.name + " prints - class expression example");
+    };
+    return class_1;
+})(Employee_1.Employee);
+var emp7 = new emp6(1, 'Donald');
+emp7.printemp();
 //# sourceMappingURL=app.js.map
