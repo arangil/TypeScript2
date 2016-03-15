@@ -1,10 +1,17 @@
 {
   "name": "TypeScript2",
-  "version": "0.0.0",
+  "version": "0.0.0",  
   "description": "TypeScript2",
   "main": "app.js",
   "author": {
     "name": "VMWIN7ENTARUN",
     "email": ""
-  }
+  },
+
+  "compilerOptions": {
+    "target": "es5",    
+    "sourceMap": true,
+    "removeComments": true,
+    "sourceRoot": "/"
+    }
 }

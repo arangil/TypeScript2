@@ -1,9 +1,12 @@
-﻿import {AddHeading} from './Library/Helpers/AddHeading';
+﻿
+import {AddHeading} from './Library/Helpers/AddHeading';
 import {Speciality} from './Library/Enums/enums';
 import {IErrorLogger} from './Library/Interfaces/IErrorLogger';
 import {IPhysician, IPhysicianManager} from './Library/Interfaces/IPhysician';
 import {Physician} from './Library/Classes/Physician';
 import {abstEmployee, Employee, SpecialEmployee, SpecialEmployee1} from './Library/Classes/Employee';
+
+
 
 function GetAllPhysicians(): IPhysician[] {
     let physicians = [
@@ -215,3 +218,4 @@ let emp6 = class extends Employee {
 
 let emp7 = new emp6(1,'Donald');
 emp7.printemp();
+
