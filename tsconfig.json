@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "outDir": "js",
+    "module": "commonjs",
+    "sourceMap": false,
+    "moduleResolution": "node"    
+  },
+  "files": [
+    "lodashtest.ts",
+    "typings/tsd.d.ts"
+  ]
+}

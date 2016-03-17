@@ -44,6 +44,7 @@
     <TypeScriptCompile Include="Library\Helpers\Utils.ts" />
     <TypeScriptCompile Include="Library\Interfaces\IErrorLogger.ts" />
     <TypeScriptCompile Include="Library\Interfaces\IPhysician.ts" />
+    <TypeScriptCompile Include="lodashtest.ts" />
     <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />
     <TypeScriptCompile Include="testns.ts" />
   </ItemGroup>
@@ -56,9 +57,6 @@
     <Folder Include="Scripts\" />
     <Folder Include="Scripts\typings\" />
     <Folder Include="Scripts\typings\node\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="appbundle.js" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
